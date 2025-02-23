@@ -174,7 +174,7 @@ public function addCollaborator(Request $request, Project $project)
 
     return redirect()->route('projects.show', $project)->with('success', 'Collaborateur retiré avec succès.');
 }
-
+////////
     
 }
 
