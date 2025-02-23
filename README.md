@@ -1,66 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Fonctionnalités
+•	Authentification des utilisateurs (Administrateurs et utilisateurs)
+•	Gestion des projets et des tâches
+•	Rôles sur les projets
+•	Téléversement et téléchargement de fichiers pour les tâches
+•	Notifications par mail pour les nouveaux collaborateurs et le nouvel assignement de tâche
+•	Contrôle d'accès basé sur les rôles
+________________________________________
+Prérequis
+Assurez-vous d'avoir les éléments suivants installés :
+•	PHP >= 8.0
+•	Composer
+•	Node.js et NPM
+•	MySQL ou une autre base de données compatible
+•	Git
+________________________________________
+Installation
+Étape 1 : Cloner le Dépôt
+git clone https://github.com/JauresAAAAGZ/projetcollab.git
+Étape 2 : Installer les Dépendances
+composer install
+npm install
+npm run build
+Étape 3 : Configuration de l'Environnement
+1.	Copier le fichier .env.example et le renommer en .env
+cp .env.example .env
+2.	Générer la clé de l'application :
+php artisan key:generate
 
-## About Laravel
+Étape 4 : Configuration de la Base de Données
+Modifiez le fichier .env avec les informations de votre base de données :
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=projet_collabo(vous retrouvez le fichié sur la racine du projet)
+DB_USERNAME=utilisateur_bd
+DB_PASSWORD=mot_de_passe_bd
+Étape 5 : Migration et Peuplement de la Base de Données si nécessaire
+php artisan migrate --seed
+________________________________________
+Configuration de l'Envoi d'Emails
+Pour activer les notifications par email, configurez les paramètres suivants dans le fichier .env :
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=votre_email@gmail.com(voirmail)
+MAIL_PASSWORD=votre_mot_de_passe_app(voirmail)
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=votre_email@gmail.com(voirmail)
+MAIL_FROM_NAME="${APP_NAME}"
+Assurez-vous d'utiliser un mot de passe d'application Gmail (via la validation en 2 étapes).
+________________________________________
+Configuration du Stockage
+Pour gérer le téléversement de fichiers, liez le dossier de stockage avec la commande suivante :
+php artisan storage:link
+________________________________________
+Lancement de l'Application
+Démarrer le Serveur de Développement Local
+php artisan serve(assurez vous de lancer votre server local)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Compiler les Ressources Front-End
+npm run dev
+Accédez à l'application à l'adresse http://localhost:8000
+________________________________________
+Identifiants Admin (Pour Tests)
+Après avoir peuplé la base de données, vous pouvez utiliser les identifiants suivants pour vous connecter en tant qu'administrateur :
+•	Email: admin@example.com
+•	Mot de passe: password
+________________________________________
 
-## Learning Laravel
+Identifiants utilisateurs (Pour Tests)
+Après avoir peuplé la base de données, vous pouvez utiliser les identifiants suivants pour vous connecter en tant qu'administrateur :
+•	Email: gz.gozo@gmail.com
+•	Mot de passe: ThePassword
+________________________________________
+Commandes Artisan Utiles
+•	Vider le cache :
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+php artisan route:clear
+•	Mettre en cache la configuration :
+php artisan config:cache
+•	Rafraîchir les migrations :
+php artisan migrate:refresh --seed
+________________________________________
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Remarques Supplémentaires
+•	Assurez-vous de bien configurer vos informations d'identification email pour éviter les erreurs SMTP.
+•	Vérifiez les permissions des dossiers /storage et /bootstrap/cache.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
