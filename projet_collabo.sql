@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 23 fév. 2025 à 17:52
+-- Généré le : dim. 23 fév. 2025 à 19:51
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -179,7 +179,10 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `titre`, `description`, `date_debut`, `date_fin`, `statut`, `owner_id`, `created_at`, `updated_at`) VALUES
-(1, 'The Gamez', 'this is a game', '2025-02-19', '2025-02-27', 'en_attente', 1, '2025-02-19 08:56:15', '2025-02-21 18:59:28');
+(1, 'The Game', 'this is a gamez', '2025-02-19', '2025-02-27', 'en_attente', 1, '2025-02-19 08:56:15', '2025-02-23 17:19:59'),
+(2, 'Constructions', 'un projet de construction', '2025-02-23', '2025-03-08', 'en_attente', 1, '2025-02-23 17:20:30', '2025-02-23 17:20:30'),
+(3, 'Voitures', 'Un projet qui parle de voiture', '2025-02-21', '2025-03-09', 'termine', 1, '2025-02-23 17:21:34', '2025-02-23 17:21:34'),
+(4, 'Immobilier', 'L\'immobilier', '2025-03-19', '2025-04-24', 'en_cours', 1, '2025-02-23 17:22:20', '2025-02-23 17:22:20');
 
 -- --------------------------------------------------------
 
@@ -203,7 +206,14 @@ CREATE TABLE `projectusers` (
 INSERT INTO `projectusers` (`id`, `project_id`, `user_id`, `role`, `created_at`, `updated_at`) VALUES
 (5, 1, 7, 'member', '2025-02-21 09:02:24', '2025-02-21 09:02:24'),
 (8, 1, 1, 'member', '2025-02-21 19:44:01', '2025-02-21 19:44:01'),
-(12, 1, 13, 'member', '2025-02-23 15:12:35', '2025-02-23 15:12:35');
+(12, 1, 13, 'member', '2025-02-23 15:12:35', '2025-02-23 15:12:35'),
+(13, 2, 14, 'member', '2025-02-23 17:22:38', '2025-02-23 17:22:38'),
+(14, 2, 8, 'admin', '2025-02-23 17:22:54', '2025-02-23 17:22:54'),
+(15, 3, 7, 'member', '2025-02-23 17:23:42', '2025-02-23 17:23:42'),
+(16, 3, 4, 'member', '2025-02-23 17:23:50', '2025-02-23 17:23:50'),
+(17, 3, 5, 'member', '2025-02-23 17:24:03', '2025-02-23 17:24:03'),
+(18, 4, 9, 'admin', '2025-02-23 17:24:36', '2025-02-23 17:24:36'),
+(19, 4, 10, 'member', '2025-02-23 17:24:43', '2025-02-23 17:24:43');
 
 -- --------------------------------------------------------
 
@@ -249,7 +259,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('KTzCmZCE8xX0Mvi357AmD1iX69e9SmHQGQZtkKKd', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZjE2MGNLalAwRVVsR3ZXR0Y5WGlJUE9TMnV5cFFablk1TkVYam85byI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1740329372);
+('GGd3Cvz6APf9BSKdYbGsSXjYbuPgg7xiJAYFx6Ea', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiam5YZnhmVkpZQWY1RzFvZWlLdzRDVEZuUElsWkJRYW1Ca2xQWTc0RCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvZGFzaGJvYXJkIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1740336684);
 
 -- --------------------------------------------------------
 
@@ -288,7 +298,10 @@ CREATE TABLE `taches` (
 
 INSERT INTO `taches` (`id`, `project_id`, `titre`, `description`, `date_echeance`, `statut`, `file_path`, `assigned_to`, `created_at`, `updated_at`) VALUES
 (4, 1, 'une tache de The game', 'dfedyhzgjhà_zhegnzuçvgçèzg', '2025-03-09', 'en_cours', 'taches_files/tKMVKaU3Q9oJ1tCedpQuFM9n4ADM9P6ZWvK7lQzZ.png', 1, '2025-02-21 08:33:29', '2025-02-21 08:49:50'),
-(5, 1, 'a tache', 'qefgqdqg', '2025-03-07', 'en_cours', 'taches_files/uzG0DWAkPaCCEFzTF74lBvjhWTK2FfwONNZvyFzo.png', 13, '2025-02-23 15:47:02', '2025-02-23 15:49:10');
+(5, 1, 'a tache', 'qefgqdqg', '2025-03-07', 'en_cours', 'taches_files/uzG0DWAkPaCCEFzTF74lBvjhWTK2FfwONNZvyFzo.png', 13, '2025-02-23 15:47:02', '2025-02-23 15:49:10'),
+(6, 2, 'construire', 'un tache de construction', '2025-02-28', 'en_cours', NULL, 14, '2025-02-23 17:44:38', '2025-02-23 17:44:38'),
+(7, 2, 'crépissagf', 'raclage du mur', '2025-02-26', 'suspendue', NULL, 8, '2025-02-23 17:46:37', '2025-02-23 17:46:37'),
+(8, 3, 'lavage', 'laver les voitures', '2025-02-27', 'termine', NULL, 5, '2025-02-23 17:47:20', '2025-02-23 17:47:20');
 
 -- --------------------------------------------------------
 
@@ -468,13 +481,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `projectusers`
 --
 ALTER TABLE `projectusers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `roleprojets`
@@ -498,7 +511,7 @@ ALTER TABLE `statuts`
 -- AUTO_INCREMENT pour la table `taches`
 --
 ALTER TABLE `taches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `users`

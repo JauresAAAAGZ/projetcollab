@@ -44,9 +44,10 @@ class TacheController extends Controller
      */
     public function create()
     {
-        $projects = Project::all();
-        $users = User::all();
-        return view('taches.create', compact('projects', 'users'));
+       // Load all projects with their collaborators
+    $projects = Project::with('collaborators')->get(); 
+
+    return view('taches.create', compact('projects'));
     }
 
     /**
@@ -104,9 +105,9 @@ class TacheController extends Controller
      */
     public function edit(Tache $tache)
     {
-        $projects = Project::all();
-        $users = User::all();
-        return view('taches.edit', compact('tache', 'projects', 'users'));
+        $project = Project::with('collaborators')->findOrFail($tache->project_id);
+
+        return view('taches.edit', compact('tache', 'project'));
     }
 
     /**

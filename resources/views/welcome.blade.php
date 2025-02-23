@@ -4,9 +4,9 @@
 <div class="container">
     <!-- Personalized Welcome Section -->
     <div class="welcome-box text-center py-4">
-        <h1>👋 Hello, {{ auth()->user()->name }}!</h1>
+        <h1>👋 Salut, {{ auth()->user()->name }}!</h1>
         <h4 id="greeting"></h4>
-        <p class="text-muted">Today is <strong id="current-date"></strong>, and the time is <strong id="current-time"></strong></p>
+        <p class="text-muted">Ajourd'hui c'est <strong id="current-date"></strong>, et il est <strong id="current-time"></strong></p>
     </div>
 
     <!-- Stats Section -->
@@ -14,7 +14,7 @@
         <div class="col-md-6">
             <div class="stats-card">
                 <h3>{{ $ownedProjects->count() }}</h3>
-                <p>Projects Created</p>
+                <p>Projets créés</p>
             </div>
         </div>
         <div class="col-md-6">
@@ -29,7 +29,7 @@
     <div class="row">
         <!-- Projects Created by the User -->
         <div class="col-md-6">
-            <h2 class="mb-3 text-primary">📌 My Created Projects</h2>
+            <h2 class="mb-3 text-primary">📌 Mes projets</h2>
             <div class="row">
                 @foreach ($ownedProjects as $project)
                     <div class="col-md-12 mb-3">
@@ -38,7 +38,7 @@
                                 <h5 class="card-titre">{{ $project->titre }}</h5>
                                 <p class="card-text">{{ Str::limit($project->description, 100) }}</p>
                                 <p class="text-muted">📅 {{ $project->date_debut }} → {{ $project->date_fin }}</p>
-                                <a href="{{ route('projects.show', $project) }}" class="btn btn-primary">View Project</a>
+                                <a href="{{ route('projects.show', $project) }}" class="btn btn-primary">Voir projet</a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                 <p class="card-text">{{ Str::limit($project->description, 100) }}</p>
                                 <p class="text-muted">🛠 Role: <strong>{{ $project->collaborators->where('id', auth()->id())->first()->pivot->role }}</strong></p>
                                 <p class="text-muted">📅 {{ $project->date_debut }} → {{ $project->date_fin }}</p>
-                                <a href="{{ route('projects.show', $project) }}" class="btn btn-success">View Project</a>
+                                <a href="{{ route('projects.show', $project) }}" class="btn btn-success">Voir Projet</a>
                             </div>
                         </div>
                     </div>
@@ -122,11 +122,11 @@
         document.getElementById('current-time').innerText = date.toLocaleTimeString();
 
         const hours = date.getHours();
-        let greeting = "🌅 Good Morning!";
+        let greeting = "🌅 Bonjour!";
         if (hours >= 12 && hours < 18) {
-            greeting = "☀️ Good Afternoon!";
+            greeting = "☀️ Bon après-midi!";
         } else if (hours >= 18) {
-            greeting = "🌙 Good Evening!";
+            greeting = "🌙 Bonsoir!";
         }
         document.getElementById('greeting').innerText = greeting;
     }
